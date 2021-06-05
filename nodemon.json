@@ -1,0 +1,12 @@
+{
+  "watch": [
+    "src/**/*.ts",
+    ".env",
+    "global.d.ts",
+    "nodemon.json"
+  ],
+  "ignore": [
+    "src/**/*.spec.ts",
+    "src/jest"
+  ]
+}
