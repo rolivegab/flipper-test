@@ -1,5 +1,5 @@
-import { config } from "dotenv";
-import { getLoginPage } from "./getLoginPage";
+import './config'
+import { getPage } from "./getPage";
 import { authenticate } from "./steps/authenticate";
 import { closeBanner } from "./steps/closeBanner";
 import { itHasMoreResults } from "./steps/itHasMoreResults";
@@ -7,15 +7,21 @@ import { loadMoreResults } from "./steps/loadMoreResults";
 import { getCountResults } from "./steps/getCountResults";
 import { saveResults } from "./steps/saveResults";
 import { searchTitle } from "./steps/searchTitle";
+import { config } from './config';
+import fs from 'fs'
+import { saveMHTMLFile } from './utils/saveMHTMLFile';
 
 config();
 const    main = async () => {
-  const page = await getLoginPage();
+  const page = await getPage('/login');
   await authenticate(page);
   await closeBanner(page);
 
-
   await searchTitle(page);
+  await page.waitForNavigation({
+    waitUntil: 'load'
+  })
+  await saveMHTMLFile(page, 'search-results')
   let actualPage = 1;
   let insertedResults = 0;
   insertedResults += await saveResults(page, actualPage);

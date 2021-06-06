@@ -1,15 +1,17 @@
 import assert from "assert";
-import { config } from "dotenv";
+import { config as dotEnvConfig } from "dotenv";
 
-config({
-  path: ".env",
-});
+export const config = () => {
+  dotEnvConfig({
+    path: ".env",
+  });
 
-const envs: Array<EnvTypes> = [
-  "USERNAME",
-  "PASSWORD"
-]
+  const envs: Array<EnvTypes> = [
+    "USERNAME",
+    "PASSWORD"
+  ]
 
-envs.forEach((i) => {
-  assert(process.env[i], `env ${i} is required`);
-});
+  envs.forEach((i) => {
+    assert(process.env[i], `env ${i} is required`);
+  });
+}

@@ -1,4 +1,4 @@
-type EnvTypes = "USERNAME" | "PASSWORD" | "LEGENDAS_TV_URL";
+type EnvTypes = "USERNAME" | "PASSWORD" | "LEGENDAS_TV_URL" | "REFRESH_MHTML_FILES";
 
 declare namespace NodeJS {
   export type ProcessEnv = {
