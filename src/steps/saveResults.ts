@@ -84,9 +84,9 @@ export const saveResults = async (page: Page, pageNumber: number) => {
   });
 
   const finalResults = await Promise.all(finalResultsPromise);
-  await getPrismaConnection().subtitle.createMany({
+  const createResult = await getPrismaConnection().subtitle.createMany({
     data: finalResults,
     skipDuplicates: true,
   });
-  return finalResults;
+  return createResult.count;
 };

@@ -9,21 +9,25 @@ import { saveResults } from "./steps/saveResults";
 import { searchTitle } from "./steps/searchTitle";
 
 config();
-const main = async () => {
+const    main = async () => {
   const page = await getLoginPage();
   await authenticate(page);
   await closeBanner(page);
+
+
   await searchTitle(page);
   let actualPage = 1;
-  let allResults = [];
-  allResults.push(...(await saveResults(page, actualPage)));
+  let insertedResults = 0;
+  insertedResults += await saveResults(page, actualPage);
   while (await itHasMoreResults(page)) {
-    actualPage = actualPage + 1;
+    actualPage += 1;
     await loadMoreResults(page);
-    allResults.push(...(await saveResults(page, actualPage)));
+    insertedResults += await saveResults(page, actualPage);
   }
   const countResults = await getCountResults(page);
-  console.log(`${countResults} results were found, ${allResults.length} of these results were stored on database.`);
+  console.log(
+    `${countResults} results were found, ${insertedResults} of these were stored on database.`
+  );
   await page.browser().close();
 };
 
