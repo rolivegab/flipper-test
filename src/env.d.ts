@@ -4,7 +4,8 @@ type EnvTypes =
   | "LEGENDAS_TV_URL"
   | "REFRESH_MHTML_FILES"
   | "MAX_PAGES_PER_TITLE"
-  | "RABBITMQ_URL";
+  | "RABBITMQ_URL"
+  | "PLATFORM";
 
 declare namespace NodeJS {
   export type ProcessEnv = {

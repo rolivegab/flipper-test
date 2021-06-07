@@ -33,3 +33,11 @@ Spawn one worker with (you can spawn multiple workers executing it on different 
   docker-compose exec node npm start -- src/worker
 ```
 <br />
+
+#
+
+To run tests:
+```
+  docker-compose exec node npm t
+```
+<br />

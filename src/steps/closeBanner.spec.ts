@@ -3,7 +3,7 @@ import { closeBanner } from "./closeBanner";
 
 describe("closeBanner", () => {
   it("closes page banner", async () => {
-    const page = await getPage("/", true);
+    const page = await getPage("/");
 
     const bannerIsOpened = await page.$eval(
       "#overlay",

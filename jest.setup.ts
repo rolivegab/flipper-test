@@ -1,5 +1,5 @@
-import { config } from "./src/config"
+import { config } from "./src/config";
 
 export default () => {
-  config()
-}
+  config();
+};

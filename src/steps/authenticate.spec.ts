@@ -3,7 +3,7 @@ import { authenticate } from "./authenticate";
 
 describe("authenticate", () => {
   it("authenticates", async () => {
-    const page = await getPage("/login", true);
+    const page = await getPage("/login");
 
     const isUnauthenticated = await page.$(
       "body > div.container > header > section > div.login > a.js_entrar"
