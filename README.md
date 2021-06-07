@@ -4,6 +4,8 @@
 ### How to use
 <br />
 
+Copy .env.model to .env, and add fill USERNAME and PASSWORD with your legendas.tv credencials.
+
 Run containers with
 ```
   docker-compose up -d
