@@ -34,10 +34,15 @@ Spawn one worker with (you can spawn multiple workers executing it on different 
 ```
 <br />
 
-#
-
+# Extras
 To run tests:
 ```
   docker-compose exec node npm t
+```
+<br />
+
+To view database results:
+```
+  docker-compose exec node node_modules/.bin/prisma2 studio
 ```
 <br />

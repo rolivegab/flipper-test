@@ -17,6 +17,8 @@ services:
     working_dir: /home/node/app
     volumes:
       - ./:/home/node/app
+    ports:
+      - 5555:5555
 
   rabbitmq:
     image: rabbitmq:3.8.16-alpine
