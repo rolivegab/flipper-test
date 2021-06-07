@@ -4,7 +4,7 @@
 ### How to use
 <br />
 
-Copy .env.model to .env, and add fill USERNAME and PASSWORD with your legendas.tv credencials.
+Copy .env.model to .env, and fill USERNAME and PASSWORD with your legendas.tv credentials.
 
 Run containers with
 ```
