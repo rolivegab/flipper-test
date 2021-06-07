@@ -13,6 +13,7 @@ describe("loadMoreResults", () => {
         t();
       };
       await page.exposeFunction("clickCallback", clickCallback);
+      await page.waitForSelector(".load_more");
       await page.$eval(".load_more", (el) => {
         if (el instanceof HTMLAnchorElement) {
           el.addEventListener("click", () => {
