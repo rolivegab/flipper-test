@@ -1,6 +1,8 @@
 import puppeteer from "puppeteer";
 
-export const getPage = async (path: "/" | "/login") => {
+export const getPage = async (
+  path: "/" | "/login" | "/busca/Breaking%20Bad"
+) => {
   const browser = await puppeteer.launch(
     process.env.PLATFORM === "docker"
       ? {

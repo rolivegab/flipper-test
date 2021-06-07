@@ -10,7 +10,10 @@ export const getMTHMLPage = async (
           executablePath: "/usr/bin/chromium-browser",
           args: ["--no-sandbox", "--disable-setuid-sandbox"],
         }
-      : { headless: false }
+      : {
+          headless: false,
+          args: ["--no-sandbox", "--disable-setuid-sandbox", "--allow-scripts"],
+        }
   );
   const page = await browser.newPage();
   const filePath = `file:${__dirname}/assets/serialized-data/${fileName}.mhtml`;

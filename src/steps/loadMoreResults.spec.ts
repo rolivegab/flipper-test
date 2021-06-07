@@ -1,31 +1,30 @@
-import { getMTHMLPage } from "../getMHTMLPage";
+import { getPage } from "../getPage";
 import { loadMoreResults } from "./loadMoreResults";
 
+jest.setTimeout(999999999);
+
 describe("loadMoreResults", () => {
-  it("clicks on the loadMore anchor", async (t) => {
-    const page = await getMTHMLPage("search-results");
-    const clickCallback = async (isAnchor: boolean) => {
-      console.log("received", isAnchor);
-      expect(isAnchor).toBeTruthy();
-      t();
-      await page.browser().close();
+  it("clicks on the loadMore anchor", (t) => {
+    const main = async () => {
+      const page = await getPage("/busca/Breaking%20Bad");
+      const clickCallback = async (isAnchor: boolean) => {
+        expect(isAnchor).toBeTruthy();
+        await page.browser().close();
+        t();
+      };
+      await page.exposeFunction("clickCallback", clickCallback);
+      await page.$eval(".load_more", (el) => {
+        if (el instanceof HTMLAnchorElement) {
+          el.addEventListener("click", () => {
+            clickCallback(
+              el instanceof HTMLAnchorElement &&
+                el.textContent === "carregar mais"
+            );
+          });
+        }
+      });
+      await loadMoreResults(page);
     };
-    await page.exposeFunction("clickCallback", clickCallback);
-    const flag = await page.$eval(".load_more", (el) => {
-      if (
-        el instanceof HTMLAnchorElement &&
-        el.textContent === "carregar mais"
-      ) {
-        el.addEventListener("click", () => {
-          clickCallback(true);
-        });
-        return true;
-      }
-      clickCallback(false);
-      return false;
-    });
-    console.log("trying to click", flag);
-    await loadMoreResults(page);
-    console.log("clicked, probably");
+    main();
   });
 });
