@@ -1,8 +1,6 @@
 import { getPage } from "../getPage";
 import { loadMoreResults } from "./loadMoreResults";
 
-jest.setTimeout(999999999);
-
 describe("loadMoreResults", () => {
   it("clicks on the loadMore anchor", (t) => {
     const main = async () => {
