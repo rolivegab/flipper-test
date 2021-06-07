@@ -6,12 +6,9 @@ export const config = () => {
     path: ".env",
   });
 
-  const envs: Array<EnvTypes> = [
-    "USERNAME",
-    "PASSWORD"
-  ]
+  const envs: Array<EnvTypes> = ["USERNAME", "PASSWORD"];
 
   envs.forEach((i) => {
     assert(process.env[i], `env ${i} is required`);
   });
-}
+};

@@ -1,3 +1,4 @@
-import { Page } from "puppeteer"
+import { Page } from "puppeteer";
 
-export const itHasMoreResults = async (page: Page) => await page.$('.load_more')
+export const itHasMoreResults = async (page: Page) =>
+  Boolean(await page.$(".load_more"));

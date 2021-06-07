@@ -9,9 +9,16 @@ services:
     ports:
       - 5432:5432
 
-  puppeteer:
-    image: node:16.3.0-alpine
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
     tty: true
     working_dir: /home/node/app
     volumes:
       - ./:/home/node/app
+
+  rabbitmq:
+    image: rabbitmq:3.8.16-alpine
+    ports:
+      - 5672:5672

@@ -1,4 +1,4 @@
-import {PrismaClient} from ".prisma/client";
+import { PrismaClient } from ".prisma/client";
 
 export const getPrismaConnection = () => {
   if (!global.prisma) {
@@ -6,4 +6,4 @@ export const getPrismaConnection = () => {
   }
 
   return global.prisma;
-}
+};
